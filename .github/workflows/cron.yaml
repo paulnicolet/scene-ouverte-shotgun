@@ -1,0 +1,24 @@
+name: Cron
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '27 * * * *'
+
+jobs:
+  scrap:
+    runs-on: ubuntu-latest
+    env:
+      ICLOUD_APP_PASSWORD: ${{ secrets.ICLOUD_APP_PASSWORD }}
+      RECIPIENTS: ${{ secrets.RECIPIENTS }}
+      FROM: ${{ secrets.FROM }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.lock
+      - name: Scrap
+        run: python src/scene_ouverte_shotgun
