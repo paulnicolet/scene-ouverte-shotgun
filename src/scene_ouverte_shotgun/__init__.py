@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 import requests
 from bs4 import BeautifulSoup
 
-KNOWN_DATES = []  # "12 juin 2024"]
+KNOWN_DATES = ["12 juin 2024"]
 FROM = os.getenv("FROM")
 RECIPIENTS = os.getenv("RECIPIENTS").split(",")
 ICLOUD_APP_PASSWORD = os.getenv("ICLOUD_APP_PASSWORD")
